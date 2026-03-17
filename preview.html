@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ip11</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Onest:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050507;
+            --accent: #f9f9f9;
+            --terminal-green: #50fa7b;
+            --text-main: #ffffff;
+            --text-dim: #8492a6;
+            --glass: rgba(15, 15, 20, 0.8);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 50% 50%, #111118 0%, #050507 100%);
+            color: var(--text-main);
+            font-family: 'Onest', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* --- High-End Card Design --- */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 45px 40px;
+            text-align: center;
+            width: 100%;
+            max-width: 370px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 242, 255, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .avatar {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            margin-bottom: 24px;
+            border: 2px solid var(--border);
+            padding: 4px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), transparent);
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: -1px;
+            background: linear-gradient(to bottom, #fff 60%, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .location {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin: 10px 0 30px 0;
+            letter-spacing: 2px;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        /* --- Premium Terminal --- */
+        .terminal {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px;
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .dot { 
+            width: 8px; 
+            height: 8px; 
+            border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .prompt { color: var(--terminal-green); }
+        
+        .command { 
+            color: var(--accent);
+            border-right: 2px solid var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 1.2s steps(10, end) forwards, blink 0.8s infinite;
+            animation-delay: 0.5s;
+        }
+
+        .response {
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            animation-delay: 1.8s;
+        }
+
+        .response-line { color: var(--text-dim); margin-bottom: 4px; }
+        .response-line span { color: var(--text-main); }
+
+        @keyframes typing { from { width: 0 } to { width: 60px } }
+        @keyframes blink { 50% { border-color: transparent } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Refined Socials --- */
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .socials a {
+            background: rgba(255, 255, 255, 0.02);
+            width: 50px; 
+            height: 50px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .socials img {
+            width: 22px; 
+            height: 22px;
+            filter: invert(1);
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+        .socials a:hover {
+            border-color: var(--accent);
+            background: rgba(0, 242, 255, 0.08);
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 242, 255, 0.1);
+        }
+
+        .socials a:hover img { 
+            opacity: 1;
+            filter: invert(1) drop-shadow(0 0 5px var(--accent));
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <img class="avatar" src="https://r2.guns.lol/b7f770a9-a85f-42dc-967f-651666b51c27.webp" alt="Ishaan">
+    
+    <h1>Ip11</h1>
+    <div class="location">INDIA</div>
+
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="dot" style="background: #ff5f56;"></div>
+            <div class="dot" style="background: #ffbd2e;"></div>
+            <div class="dot" style="background: #2afa23;"></div>
+        </div>
+        <div class="input-line">
+            <span class="prompt">root@ishaan:~$</span>
+            <span class="command">whoami</span>
+        </div>
+        
+        <div class="response">
+            <div class="response-line">&gt; <span>anonymous mind</span></div>
+            <div class="response-line">&gt; <span>code. coffee. chaos.</span></div>
+        </div>
+    </div>
+
+    <div class="socials">
+        <a href="https://github.com/Ishaan50" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+        </a>
+        <a href="https://leetcode.com/u/Ishaan1011/" target="_blank">
+            <img src="Leetcode.png" alt="LeetCode">
+        </a>
+        <a href="https://www.youtube.com/@ip-1101" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png " alt="Youtube">
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
